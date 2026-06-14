@@ -1,0 +1,133 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = {
+    "CLIENT_ID": "861556708454-d6dlm3lh05idd8npek18k6be8ba3oc68.apps.googleusercontent.com",
+    "CLIENT_SECRET": "SboVhoG9s0rNafixCSGGKXAT",
+    "SCOPE": "https://www.googleapis.com/auth/youtube",
+    "HEADERS": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Cobalt/Version",
+        "Accept": "*/*",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Referer": "https://music.youtube.com/",
+        "X-Youtube-Client-Name": "67",
+        "X-Youtube-Client-Version": "1.20230320.01.00",
+        "X-Goog-AuthUser": "0",
+        "X-Origin": "https://music.youtube.com",
+        "Origin": "https://music.youtube.com",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "same-origin",
+        "Sec-Fetch-Site": "same-origin",
+        "TE": "trailers"
+    },
+    "DATA": {
+        "context": {
+            "client": {
+                "hl": "en-GB",
+                "gl": "GB",
+                "remoteHost": "1.1.1.1",
+                "deviceMake": "",
+                "deviceModel": "",
+                "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/111.0,gzip(gfe)",
+                "clientName": "WEB_REMIX",
+                "clientVersion": "1.20230320.01.00",
+                "osName": "X11",
+                "osVersion": "",
+                "originalUrl": "https://music.youtube.com/search",
+                "platform": "DESKTOP",
+                "clientFormFactor": "UNKNOWN_FORM_FACTOR",
+                "browserName": "Firefox",
+                "browserVersion": "111.0",
+                "acceptHeader": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+                "screenWidthPoints": 1920,
+                "screenHeightPoints": 1080,
+                "screenPixelDensity": 1,
+                "screenDensityFloat": 1,
+                "utcOffsetMinutes": 120,
+                "userInterfaceTheme": "USER_INTERFACE_THEME_DARK",
+                "timeZone": "Africa/Kigali",
+                "musicAppInfo": {
+                    "pwaInstallabilityStatus": "PWA_INSTALLABILITY_STATUS_UNKNOWN",
+                    "webDisplayMode": "WEB_DISPLAY_MODE_BROWSER",
+                    "storeDigitalGoodsApiSupportStatus": {
+                        "playStoreDigitalGoodsApiSupportStatus": "DIGITAL_GOODS_API_SUPPORT_STATUS_UNSUPPORTED"
+                    }
+                }
+            },
+            "user": { "lockedSafetyMode": false },
+            "request": {
+                "useSsl": true,
+                "internalExperimentFlags": [],
+                "consistencyTokenJars": []
+            }
+        }
+    },
+    "API_URL": "https://music.youtube.com/youtubei/v1",
+    "ANDROID": {
+        "DATA": {
+            "context": {
+                "client": {
+                    "screenWidthPoints": 689,
+                    "screenHeightPoints": 963,
+                    "screenPixelDensity": 1,
+                    "utcOffsetMinutes": 120,
+                    "hl": "en",
+                    "gl": "GB",
+                    "remoteHost": "1.1.1.1",
+                    "deviceMake": "",
+                    "deviceModel": "",
+                    "userAgent": "com.google.android.apps.youtube.music/7.19.51 (Linux; U; Android 13; GB) gzip",
+                    "clientName": "ANDROID_MUSIC",
+                    "clientVersion": "7.19.51",
+                    "osName": "Android",
+                    "osVersion": "13",
+                    "originalUrl": "https://www.youtube.com/tv?is_account_switch=1&hrld=1&fltor=1",
+                    "theme": "CLASSIC",
+                    "platform": "MOBILE",
+                    "clientFormFactor": "UNKNOWN_FORM_FACTOR",
+                    "webpSupport": false,
+                    "timeZone": "Europe/Amsterdam",
+                    "acceptHeader": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
+                },
+                "user": { "enableSafetyMode": false },
+                "request": {
+                    "internalExperimentFlags": [],
+                    "consistencyTokenJars": []
+                }
+            }
+        }
+    },
+    "IOS": {
+        "DATA": {
+            "context": {
+                "client": {
+                    "screenWidthPoints": 689,
+                    "screenHeightPoints": 963,
+                    "screenPixelDensity": 1,
+                    "utcOffsetMinutes": 120,
+                    "hl": "en",
+                    "gl": "GB",
+                    "remoteHost": "1.1.1.1",
+                    "deviceMake": "",
+                    "deviceModel": "",
+                    "userAgent": "com.google.ios.apps.youtube.music/7.19 (Linux; U; Android 13; GB) gzip",
+                    "clientName": "IOS_MUSIC",
+                    "clientVersion": "7.19",
+                    "osName": "iOS",
+                    "osVersion": "16",
+                    "originalUrl": "https://www.youtube.com/tv?is_account_switch=1&hrld=1&fltor=1",
+                    "theme": "CLASSIC",
+                    "platform": "MOBILE",
+                    "clientFormFactor": "UNKNOWN_FORM_FACTOR",
+                    "webpSupport": false,
+                    "timeZone": "Europe/Amsterdam",
+                    "acceptHeader": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
+                },
+                "user": { "enableSafetyMode": false },
+                "request": {
+                    "internalExperimentFlags": [],
+                    "consistencyTokenJars": []
+                }
+            }
+        }
+    }
+};

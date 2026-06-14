@@ -1,0 +1,22 @@
+{
+  "name": "isan-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "libmuse": "^0.1.2",
+    "node-html-parser": "^6.1.13",
+    "openai": "^4.52.7",
+    "puppeteer-real-browser": "^1.4.4",
+    "uuid": "^10.0.0"
+  }
+}
