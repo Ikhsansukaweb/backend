@@ -24,7 +24,7 @@ const SERVER_PRIORITY = { mega: 10, ondesuhd: 9, ondesu3: 8, vidhide: 7, filedon
 
 // ─── Groq AI ──────────────────────────────────────────────────────────────────
 const groq = new OpenAI({
-  apiKey: process.env.GROQ_API_KEY || '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',
+  apiKey: process.env.GROQ_API_KEY,
   baseURL: 'https://api.groq.com/openai/v1',
 });
 
