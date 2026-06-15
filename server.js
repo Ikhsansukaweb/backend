@@ -787,6 +787,20 @@ async function getAnimeQuickInfo(url) {
   } catch { return { poster: '', synopsis: '', cachedAt: Date.now() }; }
 }
 
+// ─── Jikan poster cache (fallback kalau OtakuDesu 403) ───────────────────────
+const jikanPosterCache = new Map();
+
+async function getJikanPoster(title) {
+  if (jikanPosterCache.has(title)) return jikanPosterCache.get(title);
+  try {
+    const data = await jikanGet('/anime', { q: title, limit: '1', sfw: 'true' });
+    const anime = data?.data?.[0];
+    const poster = anime?.images?.jpg?.large_image_url || anime?.images?.jpg?.image_url || '';
+    if (poster) jikanPosterCache.set(title, poster);
+    return poster;
+  } catch { return ''; }
+}
+
 // ─── ANIME LIST ───────────────────────────────────────────────────────────────
 app.get('/api/anime/list', (req, res) => {
   const { page = 1, limit = 24, q = '' } = req.query;
@@ -796,7 +810,7 @@ app.get('/api/anime/list', (req, res) => {
   const results = list.slice(start, start + parseInt(limit));
   const withPosters = results.map(a => ({
     ...a,
-    poster: posterCache.get(a.url)?.poster || '',
+    poster: posterCache.get(a.url)?.poster || a.poster || '',
   }));
   res.json({ results: withPosters, total: list.length, page: parseInt(page) });
 });
@@ -805,15 +819,45 @@ app.post('/api/anime/posters', async (req, res) => {
   try {
     const { urls } = req.body;
     if (!Array.isArray(urls)) return res.status(400).json({ error: 'urls required' });
-    const uncached = urls.filter(u => !posterCache.has(u) || Date.now() - posterCache.get(u).cachedAt > POSTER_TTL);
-    const chunks = [];
-    for (let i = 0; i < uncached.length; i += 3) chunks.push(uncached.slice(i, i + 3));
-    for (const chunk of chunks) {
-      await Promise.all(chunk.map(u => getAnimeQuickInfo(u)));
-      await new Promise(r => setTimeout(r, 200));
-    }
+
     const posters = {};
-    urls.forEach(u => { posters[u] = posterCache.get(u)?.poster || ''; });
+    const needJikan = [];
+
+    urls.forEach(u => {
+      const cached = posterCache.get(u)?.poster;
+      if (cached) {
+        posters[u] = cached;
+      } else {
+        const fromList = ANIME_LIST.find(a => a.url === u);
+        if (fromList?.poster) {
+          posters[u] = fromList.poster;
+        } else {
+          posters[u] = '';
+          needJikan.push(u);
+        }
+      }
+    });
+
+    // Fallback ke Jikan untuk yang masih kosong
+    if (needJikan.length > 0) {
+      const chunks = [];
+      for (let i = 0; i < needJikan.length; i += 3) chunks.push(needJikan.slice(i, i + 3));
+      for (const chunk of chunks) {
+        await Promise.all(chunk.map(async u => {
+          const fromList = ANIME_LIST.find(a => a.url === u);
+          const title = fromList?.title || '';
+          if (title) {
+            const poster = await getJikanPoster(title);
+            if (poster) {
+              posters[u] = poster;
+              posterCache.set(u, { poster, synopsis: '', cachedAt: Date.now() });
+            }
+          }
+        }));
+        await new Promise(r => setTimeout(r, 400));
+      }
+    }
+
     res.json({ posters });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
